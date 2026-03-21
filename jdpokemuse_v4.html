@@ -432,6 +432,13 @@
     font-family: 'DM Mono', monospace; font-size: 0.58rem;
     letter-spacing: 0.08em; color: var(--muted); opacity: 0.5;
   }
+  .footer-credit {
+    font-family: 'DM Mono', monospace; font-size: 0.58rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    opacity: 0.7; transition: opacity 0.15s;
+  }
+  .footer-credit:hover { opacity: 1; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 860px) {
@@ -660,7 +667,7 @@
     <div class="contact-list">
       <div class="contact-row">
         <span class="c-label">Email</span>
-        <span class="c-value"><a href="mailto:info@jdpokemuse.com">info@jdpokemuse.com</a></span>
+        <span class="c-value"><a href="/cdn-cgi/l/email-protection#4a23242c250a202e3a25212f273f392f64292527"><span class="__cf_email__" data-cfemail="422b2c242d022826322d29272f3731276c212d2f">[email&#160;protected]</span></a></span>
       </div>
       <div class="contact-row">
         <span class="c-label">Phone</span>
@@ -695,9 +702,10 @@
 <footer>
   <a class="footer-logo" href="#"><em>JD</em> PokeMuse</a>
   <span class="footer-note">Contact details are for demonstration purposes only</span>
+  <a href="https://www.deeprblu.org" target="_blank" rel="noopener" class="footer-credit">Made by DeepRBlu</a>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const toggle = document.getElementById('themeToggle');
   const lbl    = document.getElementById('toggle-lbl');
   const html   = document.documentElement;
@@ -709,14 +717,4 @@
   }
 
   // Load saved preference
-  const saved = localStorage.getItem('jdpm-theme');
-  if (saved) applyTheme(saved);
-
-  toggle.addEventListener('click', () => {
-    const current = html.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
-  });
-</script>
-
-</body>
-</html>
+  const saved = localStor
