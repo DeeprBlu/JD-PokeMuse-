@@ -65,6 +65,13 @@
   .stat-number em{color:var(--gold);font-style:normal;}
   .stat-desc{margin-top:4px;font-size:0.72rem;font-weight:300;color:var(--muted);line-height:1.5;}
 
+  /* HOLIDAY NOTICE */
+  .holiday-notice{margin-top:60px;background:var(--bg2);border-bottom:1px solid var(--border);border-left:3px solid var(--gold);padding:14px 32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;transition:background 0.3s;}
+  .holiday-notice + .hero{padding-top:0;}
+  .holiday-label{font-family:"DM Mono",monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);flex-shrink:0;}
+  .holiday-text{font-size:0.84rem;font-weight:300;line-height:1.6;color:var(--paper);}
+  .holiday-text strong{font-weight:500;color:var(--gold);}
+  @media(max-width:520px){.holiday-notice{padding:14px 20px;gap:6px;}}
   /* TICKER */
   .ticker{background:var(--gold);padding:10px 0;overflow:hidden;white-space:nowrap;}
   .ticker-inner{display:inline-flex;animation:ticker 32s linear infinite;}
@@ -114,7 +121,6 @@
   .ship-card:hover{background:var(--bg2);}
   .ship-region{font-family:"Bebas Neue",sans-serif;font-size:1.5rem;letter-spacing:0.04em;color:var(--paper);margin-bottom:16px;display:flex;align-items:center;gap:10px;transition:color 0.3s;}
   .ship-countries{font-size:0.8rem;font-weight:300;color:var(--muted);line-height:1.9;}
-  .ship-primary{margin-top:16px;font-family:"DM Mono",monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);}
 
   /* CONTACT */
   .contact-section{border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;}
@@ -196,6 +202,12 @@
     <a class="nav-btn" href="https://www.ebay.com.au/str/jdpokemuse" target="_blank" rel="noopener">Shop on eBay</a>
   </div>
 </nav>
+
+<!-- HOLIDAY NOTICE: hides itself automatically after 10 Jan 2027. Delete this block afterwards. -->
+<div class="holiday-notice" id="holidayNotice" role="status">
+  <span class="holiday-label">🎄 Holiday Notice</span>
+  <p class="holiday-text">JD PokeMuse will be closed from <strong>16 December 2026 to 10 January 2027</strong>. For dispatch before the break, orders must be placed &amp; paid by <strong>15 December</strong>. Orders after that will ship once we're back in January.</p>
+</div>
 
 <section class="hero">
   <div class="hero-left">
@@ -332,7 +344,6 @@
     <div class="ship-card">
       <p class="ship-region">🌎 North America</p>
       <p class="ship-countries">United States<br>Canada</p>
-      <p class="ship-primary">Primary market</p>
     </div>
     <div class="ship-card">
       <p class="ship-region">🌍 Europe</p>
@@ -384,7 +395,7 @@
 
 <footer>
   <a class="footer-logo" href="#"><em>JD</em> PokeMuse</a>
-  <span class="footer-note">© 2025 JD PokeMuse · Sydney, Australia</span>
+  <span class="footer-note">© 2026 JD PokeMuse · Sydney, Australia</span>
   <a href="https://www.deeprblu.org" target="_blank" rel="noopener" class="footer-credit">Made by DeepRBlu</a>
 </footer>
 
@@ -411,6 +422,10 @@
       applyTheme(current === "dark" ? "light" : "dark");
     });
   }
+
+  // Hide holiday notice after 10 Jan 2027 (Sydney time)
+  var hn = document.getElementById("holidayNotice");
+  if (hn && Date.now() > Date.parse("2027-01-11T00:00:00+11:00")) hn.remove();
 
   // Email via JS to bypass Cloudflare
   var el = document.getElementById("jd-email");
